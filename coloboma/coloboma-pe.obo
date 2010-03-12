@@ -1,0 +1,158 @@
+default-namespace: person
+
+[Term]
+id: anatomical_entity
+name: anatomical entity
+namespace: fma
+
+[Term]
+id: normal_anatomical_entity
+name: normal anatomical entity
+is_a: anatomical_entity
+namespace: fma
+
+[Term]
+id: abnormal_anatomical_entity
+name: abnormal anatomical entity
+is_a: anatomical_entity
+namespace: aae
+
+[Term]
+id: organism
+name: organism
+is_a: anatomical_entity
+namespace: fma
+
+[Term]
+id: organism_with_abnormality
+name: organism with abnormality
+intersection_of: organism
+intersection_of: has_part abnormal_anatomical_entity
+
+[Term]
+id: eye_region
+name: eye region
+is_a: anatomical_entity
+relationship: part_of organism
+namespace: fma
+
+[Term]
+id: eyelid
+name: eyelid
+is_a: anatomical_entity
+relationship: part_of eye_region
+namespace: fma
+
+[Term]
+id: upper_eyelid
+name: upper eyelid
+is_a: eyelid
+namespace: fma
+
+[Term]
+id: lower_eyelid
+name: lower eyelid
+is_a: eyelid
+namespace: fma
+
+[Term]
+id: abnormal_hole
+name: abnormal hole
+is_a: abnormal_anatomical_entity
+namespace: aae
+
+[Term]
+id: coloboma
+name: coloboma
+intersection_of: abnormal_hole
+intersection_of: part_of eye_region
+namespace: aae
+
+[Term]
+id: eyelid_coloboma
+name: eyelid coloboma
+intersection_of: coloboma
+intersection_of: part_of eyelid
+namespace: aae
+
+[Term]
+id: upper_eyelid_coloboma
+name: upper eyelid coloboma
+intersection_of: coloboma
+intersection_of: part_of upper_eyelid
+namespace: aae
+
+[Term]
+id: lower_eyelid_coloboma
+name: lower eyelid coloboma
+intersection_of: coloboma
+intersection_of: part_of lower_eyelid
+namespace: aae
+
+[Term]
+id: person_with_eyelid_coloboma
+name: person with eyelid coloboma
+intersection_of: organism
+intersection_of: has_part eyelid_coloboma
+
+[Term]
+id: person_with_upper_eyelid_coloboma
+name: person with upper eyelid coloboma
+intersection_of: organism
+intersection_of: has_part upper_eyelid_coloboma
+
+[Term]
+id: person_with_lower_eyelid_coloboma
+name: person with lower eyelid coloboma
+intersection_of: organism
+intersection_of: has_part lower_eyelid_coloboma
+
+[Term]
+id: person_with_upper_and_lower_eyelid_coloboma
+name: person with upper and lower eyelid coloboma
+intersection_of: organism
+intersection_of: has_part upper_eyelid_coloboma
+intersection_of: has_part lower_eyelid_coloboma
+
+[Term]
+id: person_with_upper_eyelid_only_coloboma
+name: person with upper eyelid only coloboma
+intersection_of: person_with_either_upper_or_lower_eyelid_coloboma
+intersection_of: has_part upper_eyelid_coloboma
+intersection_of: lacks_part lower_eyelid_coloboma
+
+[Term]
+id: person_with_lower_eyelid_only_coloboma
+name: person with lower eyelid only coloboma
+intersection_of: person_with_either_upper_or_lower_eyelid_coloboma
+intersection_of: has_part lower_eyelid_coloboma
+intersection_of: lacks_part upper_eyelid_coloboma
+
+[Term]
+id: person_with_either_upper_or_lower_eyelid_coloboma
+name: person with either upper or lower eyelid coloboma
+union_of: person_with_lower_eyelid_only_coloboma
+union_of: person_with_upper_eyelid_only_coloboma
+is_a: organism
+relationship: has_part eyelid_coloboma ! this *should* be inferred
+
+[Typedef]
+id: part_of
+name: part_of
+is_transitive: true
+inverse_of: has_part
+
+[Typedef]
+id: has_part
+name: has_part
+is_transitive: true
+inverse_of: part_of
+
+[Typedef]
+id: lacks_part
+name: lacks_part
+
+
+
+
+
