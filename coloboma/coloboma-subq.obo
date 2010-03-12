@@ -6,34 +6,42 @@ name: quality
 namespace: pato
 
 [Term]
-id: organismal_quality
-name: organismal quality
+id: complex_quality
+name: complex quality
 intersection_of: quality
-intersection_of: inheres_in organism
+intersection_of: has_part quality
+namespace: cx
+
+[Term]
+id: complex_abnormal_quality
+name: complex abnormal quality
+intersection_of: quality
+intersection_of: has_part abnormal_quality
+namespace: cx
+
+[Term]
+id: abnormal_quality
+name: abnormal quality
+is_a: quality
 namespace: pato
 
 [Term]
 id: closure_incomplete
-name: closure incomplete
-is_a: organismal_quality
+name: closure_incomplete
+is_a: abnormal_quality
 namespace: pato
 
 [Term]
 id: coloboma
 name: coloboma
 intersection_of: closure_incomplete
-intersection_of: affects eye_region
+intersection_of: inheres_in_part_of eye_region
 
 [Term]
 id: anatomical_entity
 name: anatomical entity
 namespace: fma
 
-[Term]
-id: organism
-name: organism
-is_a: anatomical_entity
-namespace: fma
 
 [Term]
 id: eye_region
@@ -63,74 +71,72 @@ namespace: fma
 id: coloboma_of_eyelid
 name: coloboma of eyelid
 intersection_of: coloboma
-intersection_of: affects eyelid
+intersection_of: inheres_in eyelid
 
 [Term]
 id: coloboma_of_upper_eyelid
 name: coloboma of upper eyelid
 intersection_of: coloboma
-intersection_of: directly_affects upper_eyelid
+intersection_of: inheres_in upper_eyelid
 
 [Term]
 id: coloboma_of_lower_eyelid
 name: coloboma of lower eyelid
 intersection_of: coloboma
-intersection_of: directly_affects lower_eyelid
+intersection_of: inheres_in lower_eyelid
 
 [Term]
 id: coloboma_of_both_eyelids
 name: coloboma of both eyelids
-intersection_of: coloboma
-intersection_of: directly_affects upper_eyelid
-intersection_of: directly_affects lower_eyelid
+intersection_of: quality
+intersection_of: has_part coloboma_of_lower_eyelid
+intersection_of: has_part coloboma_of_upper_eyelid
+namespace: cx
 
 [Term]
 id: coloboma_of_lower_eyelid_only
 name: coloboma of lower eyelid only
-is_a: coloboma_of_single_eyelid
-intersection_of: coloboma
-intersection_of: not_affects upper_eyelid
-intersection_of: directly_affects lower_eyelid
+intersection_of: quality
+intersection_of: has_part coloboma_of_lower_eyelid
+intersection_of: lacks_part coloboma_of_upper_eyelid
+namespace: cx
 
 [Term]
 id: coloboma_of_upper_eyelid_only
 name: coloboma of upper eyelid only
-is_a: coloboma_of_single_eyelid
-intersection_of: coloboma
-intersection_of: not_affects lower_eyelid
-intersection_of: directly_affects upper_eyelid
+intersection_of: quality
+intersection_of: has_part coloboma_of_upper_eyelid
+intersection_of: lacks_part coloboma_of_lower_eyelid
+namespace: cx
 
 [Term]
 id: coloboma_of_single_eyelid
 name: coloboma of single eyelid
-is_a: coloboma
-relationship: affects eyelid
+is_a: complex_abnormal_quality
+intersection_of: has_part coloboma_of_eyelid {cardinality="1"}
 union_of: coloboma_of_upper_eyelid_only
 union_of: coloboma_of_lower_eyelid_only
-!intersection_of: coloboma
-!intersection_of: directly_affects eyelid {cardinality=1}
-
-[Typedef]
-id: affects
-name: affects
-holds_over_chain: affects part_of
-
-[Typedef]
-id: directly_affects
-name: directly_affects
-is_a: affects
-
-[Typedef]
-id: not_affects
-name: not_affects
+namespace: cx
 
 [Typedef]
 id: inheres_in
-name: inheres_i
+name: inheres_in
+
+[Typedef]
+id: inheres_in_part_of
+name: inheres_in_part_of
+holds_over_chain: inheres_in part_of
+
+[Typedef]
+id: has_part
+name: has_part
+is_transitive: true
+
+[Typedef]
+id: lacks_part
+name: lacks_part
 
 [Typedef]
 id: part_of
 name: part_of
 is_transitive: true
-
-

@@ -1,0 +1,425 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY obo "http://purl.org/obo/owl/obo#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/obo/all#"
+     xml:base="http://purl.org/obo/all"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:obo="http://purl.org/obo/owl/obo#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about=""/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#has_part -->
+
+    <owl:ObjectProperty rdf:about="&obo;has_part">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label>has_part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#lacks_part -->
+
+    <owl:ObjectProperty rdf:about="&obo;lacks_part">
+        <rdfs:label>lacks_part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#part_of -->
+
+    <owl:ObjectProperty rdf:about="&obo;part_of">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label>part_of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#abnormal_anatomical_entity -->
+
+    <owl:Class rdf:about="&obo;abnormal_anatomical_entity">
+        <rdfs:label
+            >abnormal anatomical entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;anatomical_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#abnormal_hole -->
+
+    <owl:Class rdf:about="&obo;abnormal_hole">
+        <rdfs:label>abnormal hole</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;abnormal_anatomical_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#anatomical_entity -->
+
+    <owl:Class rdf:about="&obo;anatomical_entity">
+        <rdfs:label
+            >anatomical entity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#coloboma -->
+
+    <owl:Class rdf:about="&obo;coloboma">
+        <rdfs:label>coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;abnormal_hole"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;part_of"/>
+                        <owl:someValuesFrom rdf:resource="&obo;eye_region"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#eye_region -->
+
+    <owl:Class rdf:about="&obo;eye_region">
+        <rdfs:label>eye region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;anatomical_entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;part_of"/>
+                <owl:someValuesFrom rdf:resource="&obo;organism"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#eyelid -->
+
+    <owl:Class rdf:about="&obo;eyelid">
+        <rdfs:label>eyelid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;anatomical_entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;part_of"/>
+                <owl:someValuesFrom rdf:resource="&obo;eye_region"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;eyelid_coloboma">
+        <rdfs:label>eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;coloboma"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;part_of"/>
+                        <owl:someValuesFrom rdf:resource="&obo;eyelid"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#lower_eyelid -->
+
+    <owl:Class rdf:about="&obo;lower_eyelid">
+        <rdfs:label>lower eyelid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;eyelid"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#lower_eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;lower_eyelid_coloboma">
+        <rdfs:label
+            >lower eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;coloboma"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;part_of"/>
+                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#normal_anatomical_entity -->
+
+    <owl:Class rdf:about="&obo;normal_anatomical_entity">
+        <rdfs:label
+            >normal anatomical entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;anatomical_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#organism -->
+
+    <owl:Class rdf:about="&obo;organism">
+        <rdfs:label>organism</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;anatomical_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#organism_with_abnormality -->
+
+    <owl:Class rdf:about="&obo;organism_with_abnormality">
+        <rdfs:label
+            >organism with abnormality</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;abnormal_anatomical_entity"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#person_with_either_upper_or_lower_eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;person_with_either_upper_or_lower_eyelid_coloboma">
+        <rdfs:label
+            >person with either upper or lower eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;person_with_lower_eyelid_only_coloboma"/>
+                    <rdf:Description rdf:about="&obo;person_with_upper_eyelid_only_coloboma"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;organism"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;has_part"/>
+                <owl:someValuesFrom rdf:resource="&obo;eyelid_coloboma"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#person_with_eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;person_with_eyelid_coloboma">
+        <rdfs:label
+            >person with eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;eyelid_coloboma"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#person_with_lower_eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;person_with_lower_eyelid_coloboma">
+        <rdfs:label
+            >person with lower eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#person_with_lower_eyelid_only_coloboma -->
+
+    <owl:Class rdf:about="&obo;person_with_lower_eyelid_only_coloboma">
+        <rdfs:label
+            >person with lower eyelid only coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;person_with_either_upper_or_lower_eyelid_coloboma"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;lacks_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#person_with_upper_and_lower_eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;person_with_upper_and_lower_eyelid_coloboma">
+        <rdfs:label
+            >person with upper and lower eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#person_with_upper_eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;person_with_upper_eyelid_coloboma">
+        <rdfs:label
+            >person with upper eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#person_with_upper_eyelid_only_coloboma -->
+
+    <owl:Class rdf:about="&obo;person_with_upper_eyelid_only_coloboma">
+        <rdfs:label
+            >person with upper eyelid only coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;person_with_either_upper_or_lower_eyelid_coloboma"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;lacks_part"/>
+                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#upper_eyelid -->
+
+    <owl:Class rdf:about="&obo;upper_eyelid">
+        <rdfs:label>upper eyelid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;eyelid"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/obo/owl/obo#upper_eyelid_coloboma -->
+
+    <owl:Class rdf:about="&obo;upper_eyelid_coloboma">
+        <rdfs:label
+            >upper eyelid coloboma</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;coloboma"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;part_of"/>
+                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.${svn.Revision}) http://owlapi.sourceforge.net -->
+

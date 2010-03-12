@@ -1,0 +1,191 @@
+format-version: 1.2
+
+[Term]
+id: abnormal_anatomical_entity
+name: abnormal anatomical entity
+namespace: aae
+is_a: anatomical_entity  ! anatomical entity
+
+[Term]
+id: abnormal_hole
+name: abnormal hole
+namespace: aae
+is_a: abnormal_anatomical_entity  ! abnormal anatomical entity
+
+[Term]
+id: coloboma
+name: coloboma
+namespace: aae
+is_a: abnormal_hole  {implied=true,implication_rule=genus} ! abnormal hole
+intersection_of: abnormal_hole  ! abnormal hole
+intersection_of: part_of eye_region {implied=true,implication_rule=differentium} ! eye region
+
+[Term]
+id: eyelid_coloboma
+name: eyelid coloboma
+namespace: aae
+is_a: coloboma  {implied=true,implication_rule=genus} ! coloboma
+intersection_of: coloboma  ! coloboma
+intersection_of: part_of eyelid {implied=true,implication_rule=differentium} ! eyelid
+
+[Term]
+id: lower_eyelid_coloboma
+name: lower eyelid coloboma
+namespace: aae
+is_a: coloboma  {implied=true,implication_rule=genus} ! coloboma
+is_a: eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! eyelid coloboma
+intersection_of: coloboma  ! coloboma
+intersection_of: part_of lower_eyelid {implied=true,implication_rule=differentium} ! lower eyelid
+
+[Term]
+id: upper_eyelid_coloboma
+name: upper eyelid coloboma
+namespace: aae
+is_a: coloboma  {implied=true,implication_rule=genus} ! coloboma
+is_a: eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! eyelid coloboma
+intersection_of: coloboma  ! coloboma
+intersection_of: part_of upper_eyelid {implied=true,implication_rule=differentium} ! upper eyelid
+
+[Term]
+id: anatomical_entity
+name: anatomical entity
+namespace: fma
+
+[Term]
+id: eye_region
+name: eye region
+namespace: fma
+is_a: anatomical_entity  ! anatomical entity
+relationship: part_of organism ! organism
+
+[Term]
+id: eyelid
+name: eyelid
+namespace: fma
+is_a: anatomical_entity  ! anatomical entity
+relationship: part_of eye_region ! eye region
+
+[Term]
+id: lower_eyelid
+name: lower eyelid
+namespace: fma
+is_a: eyelid  ! eyelid
+
+[Term]
+id: normal_anatomical_entity
+name: normal anatomical entity
+namespace: fma
+is_a: anatomical_entity  ! anatomical entity
+
+[Term]
+id: organism
+name: organism
+namespace: fma
+is_a: anatomical_entity  ! anatomical entity
+
+[Term]
+id: upper_eyelid
+name: upper eyelid
+namespace: fma
+is_a: eyelid  ! eyelid
+
+[Typedef]
+id: has_part
+name: has_part
+namespace: person
+is_transitive: true
+inverse_of: part_of  ! part_of
+
+[Typedef]
+id: lacks_part
+name: lacks_part
+namespace: person
+
+[Term]
+id: organism_with_abnormality
+name: organism with abnormality
+namespace: person
+is_a: organism  {implied=true,implication_rule=genus} ! organism
+intersection_of: organism  ! organism
+intersection_of: has_part abnormal_anatomical_entity {implied=true,implication_rule=differentium} ! abnormal anatomical entity
+
+[Typedef]
+id: part_of
+name: part_of
+namespace: person
+is_transitive: true
+inverse_of: has_part  ! has_part
+
+[Term]
+id: person_with_either_upper_or_lower_eyelid_coloboma
+name: person with either upper or lower eyelid coloboma
+namespace: person
+is_a: organism  ! organism
+is_a: organism_with_abnormality  {implied=true,implication_rule=genus_differentia} ! organism with abnormality
+is_a: person_with_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with eyelid coloboma
+relationship: has_part eyelid_coloboma ! eyelid coloboma
+union_of: person_with_lower_eyelid_only_coloboma  ! person with lower eyelid only coloboma
+union_of: person_with_upper_eyelid_only_coloboma  ! person with upper eyelid only coloboma
+
+[Term]
+id: person_with_eyelid_coloboma
+name: person with eyelid coloboma
+namespace: person
+is_a: organism  {implied=true,implication_rule=genus} ! organism
+is_a: organism_with_abnormality  {implied=true,implication_rule=genus_differentia} ! organism with abnormality
+intersection_of: organism  ! organism
+intersection_of: has_part eyelid_coloboma {implied=true,implication_rule=differentium} ! eyelid coloboma
+
+[Term]
+id: person_with_lower_eyelid_coloboma
+name: person with lower eyelid coloboma
+namespace: person
+is_a: organism  {implied=true,implication_rule=genus} ! organism
+is_a: organism_with_abnormality  {implied=true,implication_rule=genus_differentia} ! organism with abnormality
+is_a: person_with_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with eyelid coloboma
+intersection_of: organism  ! organism
+intersection_of: has_part lower_eyelid_coloboma {implied=true,implication_rule=differentium} ! lower eyelid coloboma
+
+[Term]
+id: person_with_lower_eyelid_only_coloboma
+name: person with lower eyelid only coloboma
+namespace: person
+is_a: organism_with_abnormality  {implied=true,implication_rule=genus_differentia} ! organism with abnormality
+is_a: person_with_lower_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with lower eyelid coloboma
+intersection_of: person_with_either_upper_or_lower_eyelid_coloboma  ! person with either upper or lower eyelid coloboma
+intersection_of: has_part lower_eyelid_coloboma {implied=true,implication_rule=differentium} ! lower eyelid coloboma
+intersection_of: lacks_part upper_eyelid_coloboma {implied=true,implication_rule=differentium} ! upper eyelid coloboma
+
+[Term]
+id: person_with_upper_and_lower_eyelid_coloboma
+name: person with upper and lower eyelid coloboma
+namespace: person
+is_a: organism  {implied=true,implication_rule=genus} ! organism
+is_a: organism_with_abnormality  {implied=true,implication_rule=genus_differentia} ! organism with abnormality
+is_a: person_with_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with eyelid coloboma
+is_a: person_with_lower_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with lower eyelid coloboma
+is_a: person_with_upper_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with upper eyelid coloboma
+intersection_of: organism  ! organism
+intersection_of: has_part lower_eyelid_coloboma {implied=true,implication_rule=differentium} ! lower eyelid coloboma
+intersection_of: has_part upper_eyelid_coloboma {implied=true,implication_rule=differentium} ! upper eyelid coloboma
+
+[Term]
+id: person_with_upper_eyelid_coloboma
+name: person with upper eyelid coloboma
+namespace: person
+is_a: organism  {implied=true,implication_rule=genus} ! organism
+is_a: organism_with_abnormality  {implied=true,implication_rule=genus_differentia} ! organism with abnormality
+is_a: person_with_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with eyelid coloboma
+intersection_of: organism  ! organism
+intersection_of: has_part upper_eyelid_coloboma {implied=true,implication_rule=differentium} ! upper eyelid coloboma
+
+[Term]
+id: person_with_upper_eyelid_only_coloboma
+name: person with upper eyelid only coloboma
+namespace: person
+is_a: organism_with_abnormality  {implied=true,implication_rule=genus_differentia} ! organism with abnormality
+is_a: person_with_upper_eyelid_coloboma  {implied=true,implication_rule=genus_differentia} ! person with upper eyelid coloboma
+intersection_of: person_with_either_upper_or_lower_eyelid_coloboma  ! person with either upper or lower eyelid coloboma
+intersection_of: has_part upper_eyelid_coloboma {implied=true,implication_rule=differentium} ! upper eyelid coloboma
+intersection_of: lacks_part lower_eyelid_coloboma {implied=true,implication_rule=differentium} ! lower eyelid coloboma
+

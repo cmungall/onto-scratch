@@ -1,0 +1,282 @@
+Namespace: owl2xml <http://www.w3.org/2006/12/owl2-xml#>
+Namespace: obo <http://purl.org/obo/owl/obo#>
+Namespace: xsd <http://www.w3.org/2001/XMLSchema#>
+Namespace: rdfs <http://www.w3.org/2000/01/rdf-schema#>
+Namespace: rdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Namespace: owl <http://www.w3.org/2002/07/owl#>
+
+
+
+Ontology: <http://purl.org/obo/all>
+
+ObjectProperty: obo:not_affects
+
+    Annotations: 
+        rdfs:label "not_affects"
+    
+    
+
+
+
+ObjectProperty: obo:inheres_in
+
+    Annotations: 
+        rdfs:label "inheres_i"
+    
+    
+
+
+
+ObjectProperty: obo:affects
+
+    Annotations: 
+        rdfs:label "affects"
+    
+    
+
+
+
+ObjectProperty: obo:directly_affects
+
+    Annotations: 
+        rdfs:label "directly_affects"
+    
+    SubPropertyOf: 
+        obo:affects
+    
+    
+
+
+
+ObjectProperty: obo:part_of
+
+    Annotations: 
+        rdfs:label "part_of"
+    
+    Characteristics: 
+        Transitive
+    
+    
+
+
+
+Class: obo:coloboma_of_eyelid
+
+    Annotations: 
+        rdfs:label "coloboma of eyelid"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:affects some obo:eyelid)
+    
+    
+
+
+
+Class: obo:eyelid
+
+    Annotations: 
+        rdfs:label "eyelid"
+    
+    SubClassOf: 
+        obo:part_of some obo:eye_region
+    
+    
+
+
+
+Class: obo:coloboma_of_upper_eyelid
+
+    Annotations: 
+        rdfs:label "coloboma of upper eyelid"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:upper_eyelid)
+    
+    
+
+
+
+Class: obo:coloboma_of_single_eyelid
+
+    Annotations: 
+        rdfs:label "coloboma of single eyelid"
+    
+    EquivalentTo: 
+        obo:coloboma_of_lower_eyelid_only
+        or obo:coloboma_of_upper_eyelid_only
+    
+    SubClassOf: 
+        obo:coloboma,
+        obo:affects some obo:eyelid
+    
+    
+
+
+
+Class: obo:coloboma_of_both_eyelids
+
+    Annotations: 
+        rdfs:label "coloboma of both eyelids"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:lower_eyelid)
+        and (obo:directly_affects some obo:upper_eyelid)
+    
+    
+
+
+
+Class: obo:organismal_quality
+
+    Annotations: 
+        rdfs:label "organismal quality"
+    
+    EquivalentTo: 
+        obo:quality
+        and (obo:inheres_in some obo:organism)
+    
+    
+
+
+
+Class: obo:quality
+
+    Annotations: 
+        rdfs:label "quality"
+    
+    
+
+
+
+Class: obo:anatomical_entity
+
+    Annotations: 
+        rdfs:label "anatomical entity"
+    
+    
+
+
+
+Class: obo:closure_incomplete
+
+    Annotations: 
+        rdfs:label "closure incomplete"
+    
+    SubClassOf: 
+        obo:organismal_quality
+    
+    
+
+
+
+Class: obo:coloboma_of_lower_eyelid
+
+    Annotations: 
+        rdfs:label "coloboma of lower eyelid"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:lower_eyelid)
+    
+    
+
+
+
+Class: obo:lower_eyelid
+
+    Annotations: 
+        rdfs:label "lower eyelid"
+    
+    SubClassOf: 
+        obo:eyelid
+    
+    
+
+
+
+Class: obo:upper_eyelid
+
+    Annotations: 
+        rdfs:label "upper eyelid"
+    
+    SubClassOf: 
+        obo:eyelid
+    
+    
+
+
+
+Class: obo:coloboma_of_upper_eyelid_only
+
+    Annotations: 
+        rdfs:label "coloboma of upper eyelid only"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:upper_eyelid)
+        and (obo:not_affects some obo:lower_eyelid)
+    
+    SubClassOf: 
+        obo:coloboma_of_single_eyelid
+    
+    
+
+
+
+Class: obo:organism
+
+    Annotations: 
+        rdfs:label "organism"
+    
+    SubClassOf: 
+        obo:anatomical_entity
+    
+    
+
+
+
+Class: obo:eye_region
+
+    Annotations: 
+        rdfs:label "eye region"
+    
+    SubClassOf: 
+        obo:anatomical_entity
+    
+    
+
+
+
+Class: obo:coloboma_of_lower_eyelid_only
+
+    Annotations: 
+        rdfs:label "coloboma of lower eyelid only"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:lower_eyelid)
+        and (obo:not_affects some obo:upper_eyelid)
+    
+    SubClassOf: 
+        obo:coloboma_of_single_eyelid
+    
+    
+
+
+
+Class: obo:coloboma
+
+    Annotations: 
+        rdfs:label "coloboma"
+    
+    EquivalentTo: 
+        obo:closure_incomplete
+        and (obo:affects some obo:eye_region)
+    
+    
+
+
+

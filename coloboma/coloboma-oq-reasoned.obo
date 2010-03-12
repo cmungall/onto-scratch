@@ -1,0 +1,162 @@
+format-version: 1.2
+
+[Term]
+id: anatomical_entity
+name: anatomical entity
+namespace: fma
+
+[Term]
+id: eye_region
+name: eye region
+namespace: fma
+is_a: anatomical_entity  ! anatomical entity
+
+[Term]
+id: eyelid
+name: eyelid
+namespace: fma
+relationship: part_of eye_region ! eye region
+
+[Term]
+id: lower_eyelid
+name: lower eyelid
+namespace: fma
+is_a: eyelid  ! eyelid
+
+[Term]
+id: organism
+name: organism
+namespace: fma
+is_a: anatomical_entity  ! anatomical entity
+
+[Term]
+id: upper_eyelid
+name: upper eyelid
+namespace: fma
+is_a: eyelid  ! eyelid
+
+[Typedef]
+id: affects
+name: affects
+namespace: hpo
+holds_over_chain: affects part_of  ! part_of
+
+[Term]
+id: coloboma
+name: coloboma
+namespace: hpo
+is_a: closure_incomplete  {implied=true,implication_rule=genus} ! closure incomplete
+intersection_of: closure_incomplete  ! closure incomplete
+intersection_of: affects eye_region {implied=true,implication_rule=differentium} ! eye region
+
+[Term]
+id: coloboma_of_both_eyelids
+name: coloboma of both eyelids
+namespace: hpo
+is_a: coloboma  {implied=true,implication_rule=genus} ! coloboma
+is_a: coloboma_of_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of eyelid
+is_a: coloboma_of_lower_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of lower eyelid
+is_a: coloboma_of_upper_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of upper eyelid
+intersection_of: coloboma  ! coloboma
+intersection_of: directly_affects lower_eyelid {implied=true,implication_rule=differentium} ! lower eyelid
+intersection_of: directly_affects upper_eyelid {implied=true,implication_rule=differentium} ! upper eyelid
+
+[Term]
+id: coloboma_of_eyelid
+name: coloboma of eyelid
+namespace: hpo
+is_a: coloboma  {implied=true,implication_rule=genus} ! coloboma
+intersection_of: coloboma  ! coloboma
+intersection_of: affects eyelid {implied=true,implication_rule=differentium} ! eyelid
+
+[Term]
+id: coloboma_of_lower_eyelid
+name: coloboma of lower eyelid
+namespace: hpo
+is_a: coloboma  {implied=true,implication_rule=genus} ! coloboma
+is_a: coloboma_of_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of eyelid
+intersection_of: coloboma  ! coloboma
+intersection_of: directly_affects lower_eyelid {implied=true,implication_rule=differentium} ! lower eyelid
+
+[Term]
+id: coloboma_of_lower_eyelid_only
+name: coloboma of lower eyelid only
+namespace: hpo
+is_a: coloboma_of_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of eyelid
+is_a: coloboma_of_lower_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of lower eyelid
+is_a: coloboma_of_single_eyelid  ! coloboma of single eyelid
+intersection_of: coloboma  ! coloboma
+intersection_of: directly_affects lower_eyelid {implied=true,implication_rule=differentium} ! lower eyelid
+intersection_of: not_affects upper_eyelid {implied=true,implication_rule=differentium} ! upper eyelid
+
+[Term]
+id: coloboma_of_single_eyelid
+name: coloboma of single eyelid
+namespace: hpo
+is_a: coloboma  ! coloboma
+is_a: coloboma_of_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of eyelid
+relationship: affects eyelid ! eyelid
+union_of: coloboma_of_lower_eyelid_only  ! coloboma of lower eyelid only
+union_of: coloboma_of_upper_eyelid_only  ! coloboma of upper eyelid only
+
+[Term]
+id: coloboma_of_upper_eyelid
+name: coloboma of upper eyelid
+namespace: hpo
+is_a: coloboma  {implied=true,implication_rule=genus} ! coloboma
+is_a: coloboma_of_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of eyelid
+intersection_of: coloboma  ! coloboma
+intersection_of: directly_affects upper_eyelid {implied=true,implication_rule=differentium} ! upper eyelid
+
+[Term]
+id: coloboma_of_upper_eyelid_only
+name: coloboma of upper eyelid only
+namespace: hpo
+is_a: coloboma_of_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of eyelid
+is_a: coloboma_of_single_eyelid  ! coloboma of single eyelid
+is_a: coloboma_of_upper_eyelid  {implied=true,implication_rule=genus_differentia} ! coloboma of upper eyelid
+intersection_of: coloboma  ! coloboma
+intersection_of: directly_affects upper_eyelid {implied=true,implication_rule=differentium} ! upper eyelid
+intersection_of: not_affects lower_eyelid {implied=true,implication_rule=differentium} ! lower eyelid
+
+[Typedef]
+id: directly_affects
+name: directly_affects
+namespace: hpo
+is_a: affects  ! affects
+
+[Typedef]
+id: inheres_in
+name: inheres_i
+namespace: hpo
+
+[Typedef]
+id: not_affects
+name: not_affects
+namespace: hpo
+
+[Typedef]
+id: part_of
+name: part_of
+namespace: hpo
+is_transitive: true
+
+[Term]
+id: closure_incomplete
+name: closure incomplete
+namespace: pato
+is_a: organismal_quality  ! organismal quality
+
+[Term]
+id: organismal_quality
+name: organismal quality
+namespace: pato
+is_a: quality  {implied=true,implication_rule=genus} ! quality
+intersection_of: quality  ! quality
+intersection_of: inheres_in organism {implied=true,implication_rule=differentium} ! organism
+
+[Term]
+id: quality
+name: quality
+namespace: pato
+

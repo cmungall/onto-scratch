@@ -1,0 +1,314 @@
+Namespace: owl2xml <http://www.w3.org/2006/12/owl2-xml#>
+Namespace: obo <http://purl.org/obo/owl/obo#>
+Namespace: xsd <http://www.w3.org/2001/XMLSchema#>
+Namespace: rdfs <http://www.w3.org/2000/01/rdf-schema#>
+Namespace: rdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Namespace: owl <http://www.w3.org/2002/07/owl#>
+
+
+
+Ontology: <http://purl.org/obo/all>
+
+ObjectProperty: obo:has_part
+
+    Annotations: 
+        rdfs:label "has_part"
+    
+    Characteristics: 
+        Transitive
+    
+    
+
+
+
+ObjectProperty: obo:part_of
+
+    Annotations: 
+        rdfs:label "part_of"
+    
+    Characteristics: 
+        Transitive
+    
+    
+
+
+
+ObjectProperty: obo:lacks_part
+
+    Annotations: 
+        rdfs:label "lacks_part"
+    
+    
+
+
+
+Class: obo:person_with_either_upper_or_lower_eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "person with either upper or lower eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:person_with_lower_eyelid_only_coloboma
+        or obo:person_with_upper_eyelid_only_coloboma
+    
+    SubClassOf: 
+        obo:organism,
+        obo:has_part some obo:eyelid_coloboma
+    
+    
+
+
+
+Class: obo:eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:part_of some obo:eyelid)
+    
+    
+
+
+
+Class: obo:eyelid
+
+    Annotations: 
+        rdfs:label "eyelid"
+    
+    SubClassOf: 
+        obo:anatomical_entity,
+        obo:part_of some obo:eye_region
+    
+    
+
+
+
+Class: obo:person_with_lower_eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "person with lower eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:lower_eyelid_coloboma)
+    
+    
+
+
+
+Class: obo:upper_eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "upper eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:part_of some obo:upper_eyelid)
+    
+    
+
+
+
+Class: obo:person_with_upper_eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "person with upper eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:upper_eyelid_coloboma)
+    
+    
+
+
+
+Class: obo:person_with_lower_eyelid_only_coloboma
+
+    Annotations: 
+        rdfs:label "person with lower eyelid only coloboma"
+    
+    EquivalentTo: 
+        obo:person_with_either_upper_or_lower_eyelid_coloboma
+        and (obo:has_part some obo:lower_eyelid_coloboma)
+        and (obo:lacks_part some obo:upper_eyelid_coloboma)
+    
+    
+
+
+
+Class: obo:normal_anatomical_entity
+
+    Annotations: 
+        rdfs:label "normal anatomical entity"
+    
+    SubClassOf: 
+        obo:anatomical_entity
+    
+    
+
+
+
+Class: obo:person_with_eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "person with eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:eyelid_coloboma)
+    
+    
+
+
+
+Class: obo:abnormal_anatomical_entity
+
+    Annotations: 
+        rdfs:label "abnormal anatomical entity"
+    
+    SubClassOf: 
+        obo:anatomical_entity
+    
+    
+
+
+
+Class: obo:anatomical_entity
+
+    Annotations: 
+        rdfs:label "anatomical entity"
+    
+    
+
+
+
+Class: obo:organism_with_abnormality
+
+    Annotations: 
+        rdfs:label "organism with abnormality"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:abnormal_anatomical_entity)
+    
+    
+
+
+
+Class: obo:abnormal_hole
+
+    Annotations: 
+        rdfs:label "abnormal hole"
+    
+    SubClassOf: 
+        obo:abnormal_anatomical_entity
+    
+    
+
+
+
+Class: obo:lower_eyelid
+
+    Annotations: 
+        rdfs:label "lower eyelid"
+    
+    SubClassOf: 
+        obo:eyelid
+    
+    
+
+
+
+Class: obo:upper_eyelid
+
+    Annotations: 
+        rdfs:label "upper eyelid"
+    
+    SubClassOf: 
+        obo:eyelid
+    
+    
+
+
+
+Class: obo:person_with_upper_eyelid_only_coloboma
+
+    Annotations: 
+        rdfs:label "person with upper eyelid only coloboma"
+    
+    EquivalentTo: 
+        obo:person_with_either_upper_or_lower_eyelid_coloboma
+        and (obo:has_part some obo:upper_eyelid_coloboma)
+        and (obo:lacks_part some obo:lower_eyelid_coloboma)
+    
+    
+
+
+
+Class: obo:organism
+
+    Annotations: 
+        rdfs:label "organism"
+    
+    SubClassOf: 
+        obo:anatomical_entity
+    
+    
+
+
+
+Class: obo:eye_region
+
+    Annotations: 
+        rdfs:label "eye region"
+    
+    SubClassOf: 
+        obo:anatomical_entity,
+        obo:part_of some obo:organism
+    
+    
+
+
+
+Class: obo:lower_eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "lower eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:part_of some obo:lower_eyelid)
+    
+    
+
+
+
+Class: obo:coloboma
+
+    Annotations: 
+        rdfs:label "coloboma"
+    
+    EquivalentTo: 
+        obo:abnormal_hole
+        and (obo:part_of some obo:eye_region)
+    
+    
+
+
+
+Class: obo:person_with_upper_and_lower_eyelid_coloboma
+
+    Annotations: 
+        rdfs:label "person with upper and lower eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:lower_eyelid_coloboma)
+        and (obo:has_part some obo:upper_eyelid_coloboma)
+    
+    
+
+
+
