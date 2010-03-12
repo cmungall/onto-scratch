@@ -90,6 +90,10 @@ Class: obo:coloboma_of_upper_eyelid
     Annotations: 
         rdfs:label "coloboma of upper eyelid"
     
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:upper_eyelid)
+    
     
 
 
@@ -115,6 +119,11 @@ Class: obo:coloboma_of_both_eyelids
 
     Annotations: 
         rdfs:label "coloboma of both eyelids"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:lower_eyelid)
+        and (obo:directly_affects some obo:upper_eyelid)
     
     
 
@@ -168,6 +177,10 @@ Class: obo:coloboma_of_lower_eyelid
     Annotations: 
         rdfs:label "coloboma of lower eyelid"
     
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:directly_affects some obo:lower_eyelid)
+    
     
 
 
@@ -203,6 +216,7 @@ Class: obo:coloboma_of_upper_eyelid_only
     
     EquivalentTo: 
         obo:coloboma
+        and (obo:directly_affects some obo:upper_eyelid)
         and (obo:affects exactly 0 obo:lower_eyelid)
     
     SubClassOf: 
@@ -243,6 +257,7 @@ Class: obo:coloboma_of_lower_eyelid_only
     
     EquivalentTo: 
         obo:coloboma
+        and (obo:directly_affects some obo:lower_eyelid)
         and (obo:affects exactly 0 obo:upper_eyelid)
     
     SubClassOf: 

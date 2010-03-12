@@ -52,7 +52,8 @@ Class: obo:person_with_either_upper_or_lower_eyelid_coloboma
         or obo:person_with_upper_eyelid_only_coloboma
     
     SubClassOf: 
-        obo:organism
+        obo:organism,
+        obo:has_part some obo:eyelid_coloboma
     
     
 
@@ -62,6 +63,10 @@ Class: obo:eyelid_coloboma
 
     Annotations: 
         rdfs:label "eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:part_of some obo:eyelid)
     
     
 
@@ -73,7 +78,8 @@ Class: obo:eyelid
         rdfs:label "eyelid"
     
     SubClassOf: 
-        obo:anatomical_entity
+        obo:anatomical_entity,
+        obo:part_of some obo:eye_region
     
     
 
@@ -84,6 +90,10 @@ Class: obo:person_with_lower_eyelid_coloboma
     Annotations: 
         rdfs:label "person with lower eyelid coloboma"
     
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:lower_eyelid_coloboma)
+    
     
 
 
@@ -93,6 +103,10 @@ Class: obo:upper_eyelid_coloboma
     Annotations: 
         rdfs:label "upper eyelid coloboma"
     
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:part_of some obo:upper_eyelid)
+    
     
 
 
@@ -101,6 +115,10 @@ Class: obo:person_with_upper_eyelid_coloboma
 
     Annotations: 
         rdfs:label "person with upper eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:upper_eyelid_coloboma)
     
     
 
@@ -113,6 +131,7 @@ Class: obo:person_with_lower_eyelid_only_coloboma
     
     EquivalentTo: 
         obo:person_with_either_upper_or_lower_eyelid_coloboma
+        and (obo:has_part some obo:lower_eyelid_coloboma)
         and (obo:has_part exactly 0 obo:upper_eyelid_coloboma)
     
     
@@ -135,6 +154,10 @@ Class: obo:person_with_eyelid_coloboma
 
     Annotations: 
         rdfs:label "person with eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:eyelid_coloboma)
     
     
 
@@ -165,6 +188,10 @@ Class: obo:organism_with_abnormality
 
     Annotations: 
         rdfs:label "organism with abnormality"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:abnormal_anatomical_entity)
     
     
 
@@ -213,6 +240,7 @@ Class: obo:person_with_upper_eyelid_only_coloboma
     
     EquivalentTo: 
         obo:person_with_either_upper_or_lower_eyelid_coloboma
+        and (obo:has_part some obo:upper_eyelid_coloboma)
         and (obo:has_part exactly 0 obo:lower_eyelid_coloboma)
     
     
@@ -237,7 +265,8 @@ Class: obo:eye_region
         rdfs:label "eye region"
     
     SubClassOf: 
-        obo:anatomical_entity
+        obo:anatomical_entity,
+        obo:part_of some obo:organism
     
     
 
@@ -248,6 +277,10 @@ Class: obo:lower_eyelid_coloboma
     Annotations: 
         rdfs:label "lower eyelid coloboma"
     
+    EquivalentTo: 
+        obo:coloboma
+        and (obo:part_of some obo:lower_eyelid)
+    
     
 
 
@@ -257,6 +290,10 @@ Class: obo:coloboma
     Annotations: 
         rdfs:label "coloboma"
     
+    EquivalentTo: 
+        obo:abnormal_hole
+        and (obo:part_of some obo:eye_region)
+    
     
 
 
@@ -265,6 +302,11 @@ Class: obo:person_with_upper_and_lower_eyelid_coloboma
 
     Annotations: 
         rdfs:label "person with upper and lower eyelid coloboma"
+    
+    EquivalentTo: 
+        obo:organism
+        and (obo:has_part some obo:lower_eyelid_coloboma)
+        and (obo:has_part some obo:upper_eyelid_coloboma)
     
     
 
