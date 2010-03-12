@@ -135,6 +135,7 @@ is_transitive: true
 [Typedef]
 id: lacks_part
 name: lacks_part
+relationship: has_zero_cardinality_over has_part
 
 [Typedef]
 id: part_of

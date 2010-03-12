@@ -214,8 +214,9 @@
                         <owl:someValuesFrom rdf:resource="&obo;coloboma_of_lower_eyelid"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;lacks_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;coloboma_of_upper_eyelid"/>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:onClass rdf:resource="&obo;coloboma_of_upper_eyelid"/>
+                        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -276,8 +277,9 @@
                         <owl:someValuesFrom rdf:resource="&obo;coloboma_of_upper_eyelid"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;lacks_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;coloboma_of_lower_eyelid"/>
+                        <owl:onProperty rdf:resource="&obo;has_part"/>
+                        <owl:onClass rdf:resource="&obo;coloboma_of_lower_eyelid"/>
+                        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>

@@ -229,7 +229,7 @@ Class: obo:coloboma_of_upper_eyelid_only
     EquivalentTo: 
         obo:quality
         and (obo:has_part some obo:coloboma_of_upper_eyelid)
-        and (obo:lacks_part some obo:coloboma_of_lower_eyelid)
+        and (obo:has_part exactly 0 obo:coloboma_of_lower_eyelid)
     
     
 
@@ -267,7 +267,7 @@ Class: obo:coloboma_of_lower_eyelid_only
     EquivalentTo: 
         obo:quality
         and (obo:has_part some obo:coloboma_of_lower_eyelid)
-        and (obo:lacks_part some obo:coloboma_of_upper_eyelid)
+        and (obo:has_part exactly 0 obo:coloboma_of_upper_eyelid)
     
     
 

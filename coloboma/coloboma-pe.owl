@@ -103,17 +103,6 @@
 
     <owl:Class rdf:about="&obo;coloboma">
         <rdfs:label>coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;abnormal_hole"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;part_of"/>
-                        <owl:someValuesFrom rdf:resource="&obo;eye_region"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -123,12 +112,6 @@
     <owl:Class rdf:about="&obo;eye_region">
         <rdfs:label>eye region</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;anatomical_entity"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;part_of"/>
-                <owl:someValuesFrom rdf:resource="&obo;organism"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -138,12 +121,6 @@
     <owl:Class rdf:about="&obo;eyelid">
         <rdfs:label>eyelid</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;anatomical_entity"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;part_of"/>
-                <owl:someValuesFrom rdf:resource="&obo;eye_region"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -152,17 +129,6 @@
 
     <owl:Class rdf:about="&obo;eyelid_coloboma">
         <rdfs:label>eyelid coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;coloboma"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;part_of"/>
-                        <owl:someValuesFrom rdf:resource="&obo;eyelid"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -181,17 +147,6 @@
     <owl:Class rdf:about="&obo;lower_eyelid_coloboma">
         <rdfs:label
             >lower eyelid coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;coloboma"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;part_of"/>
-                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -220,17 +175,6 @@
     <owl:Class rdf:about="&obo;organism_with_abnormality">
         <rdfs:label
             >organism with abnormality</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;organism"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;abnormal_anatomical_entity"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -249,12 +193,6 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&obo;organism"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;has_part"/>
-                <owl:someValuesFrom rdf:resource="&obo;eyelid_coloboma"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -264,17 +202,6 @@
     <owl:Class rdf:about="&obo;person_with_eyelid_coloboma">
         <rdfs:label
             >person with eyelid coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;organism"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;eyelid_coloboma"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -284,17 +211,6 @@
     <owl:Class rdf:about="&obo;person_with_lower_eyelid_coloboma">
         <rdfs:label
             >person with lower eyelid coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;organism"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -310,11 +226,8 @@
                     <rdf:Description rdf:about="&obo;person_with_either_upper_or_lower_eyelid_coloboma"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;lacks_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
+                        <owl:onClass rdf:resource="&obo;upper_eyelid_coloboma"/>
+                        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -328,21 +241,6 @@
     <owl:Class rdf:about="&obo;person_with_upper_and_lower_eyelid_coloboma">
         <rdfs:label
             >person with upper and lower eyelid coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;organism"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -352,17 +250,6 @@
     <owl:Class rdf:about="&obo;person_with_upper_eyelid_coloboma">
         <rdfs:label
             >person with upper eyelid coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;organism"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -378,11 +265,8 @@
                     <rdf:Description rdf:about="&obo;person_with_either_upper_or_lower_eyelid_coloboma"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&obo;has_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid_coloboma"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;lacks_part"/>
-                        <owl:someValuesFrom rdf:resource="&obo;lower_eyelid_coloboma"/>
+                        <owl:onClass rdf:resource="&obo;lower_eyelid_coloboma"/>
+                        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:cardinality>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -405,17 +289,6 @@
     <owl:Class rdf:about="&obo;upper_eyelid_coloboma">
         <rdfs:label
             >upper eyelid coloboma</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;coloboma"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;part_of"/>
-                        <owl:someValuesFrom rdf:resource="&obo;upper_eyelid"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
 </rdf:RDF>
 

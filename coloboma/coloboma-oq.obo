@@ -123,10 +123,11 @@ is_a: affects
 [Typedef]
 id: not_affects
 name: not_affects
+relationship: has_zero_cardinality_over affects
 
 [Typedef]
 id: inheres_in
-name: inheres_i
+name: inheres_in
 
 [Typedef]
 id: part_of

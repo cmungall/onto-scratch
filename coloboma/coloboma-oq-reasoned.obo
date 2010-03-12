@@ -127,7 +127,7 @@ is_a: affects  ! affects
 
 [Typedef]
 id: inheres_in
-name: inheres_i
+name: inheres_in
 namespace: hpo
 
 [Typedef]

@@ -151,6 +151,7 @@ inverse_of: part_of
 [Typedef]
 id: lacks_part
 name: lacks_part
+relationship: has_zero_cardinality_over has_part
 
 
 
